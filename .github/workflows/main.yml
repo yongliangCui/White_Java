@@ -1,0 +1,73 @@
+# This is a basic workflow to help you get started with Actions
+
+name: CI
+
+# Controls when the workflow will run
+on:
+  # Triggers the workflow on push or pull request events but only for the main branch
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+  # Allows you to run this workflow manually from the Actions tab
+  workflow_dispatch:
+
+# A workflow run is made up of one or more jobs that can run sequentially or in parallel
+jobs:
+  # This workflow contains a single job called "build"
+  build:
+    # The type of runner that the job will run on
+    runs-on: ubuntu-latest
+
+    # Steps represent a sequence of tasks that will be executed as part of the job
+    steps:
+      # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
+      - uses: actions/checkout@v3
+
+      # Runs a single command using the runners shell
+      - name: Set up JDK 8
+        uses: actions/setup-java@v3.3.0
+        with:
+    # The Java version to set up. Takes a whole or semver Java version. See examples of supported syntax in README file
+          java-version: 1.8
+    # Java distribution. See the list of supported distributions in README file
+          distribution: adopt
+      - name: Cache
+        uses: actions/cache@v3.0.3
+        with: 
+          path: ~/.m2/repository
+          key: ${{ runner.os }}-maven-${{ hashFiles('**/pom.xml') }}
+          restore-keys: |
+            ${{ runner.os }}-maven-
+      - name: Build
+        run: mvn package -Dmaven.test.skip=true
+        
+      - name: Login docker
+        uses: docker/login-action@v2.0.0
+        with: 
+          username: ${{ secrets.DOCKER_HUB_USERNAME }}
+          password: ${{ secrets.DOCKER_HUB_ACCESS_TOKEN }}
+      - name: set up docker buildx
+        id: buildx
+        uses: docker/setup-buildx-action@v2.0.0
+        
+      - name: push to dockerhub
+        id: docker_build
+        uses: docker/build-push-action@v3.0.0
+        with:
+          context: ./
+          file: ./Dockerfile
+          push: true
+          tags: ${{ secrets.DOCKER_HUB_USERNAME }}/imageName:latest
+
+
+
+
+
+
+
+
+
+
+
