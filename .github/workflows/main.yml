@@ -45,9 +45,6 @@ jobs:
         id: buildx
         uses: docker/setup-buildx-action@v2.0.0
         
-      - name: push tags
-        run: docker docker push 425274609/white_java:www
-        
       - name: push to dockerhub
         id: docker_build
         uses: docker/build-push-action@v3.0.0
@@ -55,5 +52,5 @@ jobs:
           context: ./
           file: ./Dockerfile
           push: true
-          tag: ${{ secrets.DOCKER_HUB_USERNAME }}/white_java/www
+          tag: ${{ secrets.DOCKER_HUB_USERNAME }}/white_java/white
           
