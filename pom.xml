@@ -5,7 +5,7 @@
     <version>1.0.0</version>
     <name>wj</name>
     <description>White Jotter - Your Mind Palace</description>
-    <packaging>war</packaging>
+    <packaging>jar</packaging>
     <parent>
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-starter-parent</artifactId>
