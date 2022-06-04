@@ -1,5 +1,5 @@
 # 该镜像需要依赖的基础镜像
-FROM FROM openjdk:11
+FROM openjdk:11
 # 调整时区
 RUN rm -f /etc/localtime \
 && ln -sv /usr/share/zoneinfo/Asia/Shanghai /etc/localtime \
