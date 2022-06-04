@@ -52,5 +52,5 @@ jobs:
           context: ./
           file: ./Dockerfile
           push: true
-          tag: ${{ secrets.DOCKER_HUB_USERNAME }}/imageName:latest
+          tag: ${{ secrets.DOCKER_HUB_USERNAME }}/
           
