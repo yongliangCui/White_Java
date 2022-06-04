@@ -52,5 +52,5 @@ jobs:
           context: ./
           file: ./Dockerfile
           push: true
-          tag: latest
+          tag: ${{ secrets.DOCKER_HUB_USERNAME }}/wj-1.0.0:latest
           
