@@ -61,8 +61,8 @@ jobs:
         with:
           command: |
             docker pull 425274609/white_java:latest
-            docker rm -f containerName||true&&docker run  --name=white_java -d -p 8443:8443 425274609/white_java:latest 
-            docker image prune -af
+         #   docker rm -f containerName||true&&docker run  --name=white_java -d -p 8443:8443 425274609/white_java:latest 
+         #  docker image prune -af
           host: ${{ secrets.HOST }}
           user: ${{ secrets.USER }}
           key: ${{ secrets.PRIVATE_KEY}}
