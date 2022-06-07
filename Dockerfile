@@ -7,4 +7,4 @@ RUN rm -f /etc/localtime \
 #将当前目录下的jar包复制到docker容器的/目录
 ADD target/wj-1.0.0.jar /wj/wj-1.0.0.jar 
 #指定docker容器启动时运行jar包
-ENTRYPOINT ["java", "-jar", "wj/wj-1.0.0.jar"]
+ENTRYPOINT ["java", "-version"]
