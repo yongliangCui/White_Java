@@ -5,6 +5,6 @@ RUN rm -f /etc/localtime \
 && ln -sv /usr/share/zoneinfo/Asia/Shanghai /etc/localtime \
 && echo "Asia/Shanghai" > /etc/timezone 
 #将当前目录下的jar包复制到docker容器的/目录
-ADD target/wj-1.0.0.jar /wj/wj-1.0.0.jar 
+ADD target/wj-1.0.0.jar /white_java/wj-1.0.0.jar 
 #指定docker容器启动时运行jar包
-ENTRYPOINT ["java", "-version"]
+ENTRYPOINT ["java", "-jar", "white_java/wj-1.0.0.jar"]
