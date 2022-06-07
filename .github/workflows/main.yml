@@ -23,10 +23,10 @@ jobs:
       - uses: actions/checkout@v3
 
 #       安装JDK环境，并使用maven命令编译打包仓库代码
-      - name: Set up JDK 9
+      - name: Set up JDK 8
         uses: actions/setup-java@v3.3.0
         with:
-          java-version: 9.0.4
+          java-version: 8
           distribution: adopt
       - name: Build
         run: mvn package -Dmaven.test.skip=true
