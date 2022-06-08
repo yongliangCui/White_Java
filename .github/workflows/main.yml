@@ -60,8 +60,8 @@ jobs:
         uses: fifsky/ssh-action@v0.0.6
         with:
           command: |
-            docker pull 425274609/white_java:latest
             docker stop white
+            docker pull 425274609/white_java:latest
             docker run --rm --name white_java -d -p 8443:8443 425274609/white_java:latest 
             docker image prune -af
           host: ${{ secrets.HOST }}
