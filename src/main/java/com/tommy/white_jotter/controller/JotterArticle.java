@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.*;
 import javax.annotation.Resource;
 
 @RestController
+@CrossOrigin
 public class JotterArticle {
     @Resource
     private JotterArticleService jotterArticleService;

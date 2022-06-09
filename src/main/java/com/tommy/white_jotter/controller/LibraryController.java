@@ -16,6 +16,7 @@ import java.util.List;
 
 
 @RestController
+@CrossOrigin
 public class LibraryController {
     @Autowired
     private BookService bookService;

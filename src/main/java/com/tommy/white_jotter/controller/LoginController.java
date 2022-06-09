@@ -9,15 +9,13 @@ import org.apache.shiro.authc.IncorrectCredentialsException;
 import org.apache.shiro.authc.UnknownAccountException;
 import org.apache.shiro.authc.UsernamePasswordToken;
 import org.apache.shiro.subject.Subject;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.util.HtmlUtils;
 
 import javax.annotation.Resource;
 
 @RestController
+@CrossOrigin
 public class LoginController {
     @Resource
     private UserService userService;
@@ -57,7 +55,7 @@ public class LoginController {
         return ResultFactory.buildFailResult("未知错误");
     }
 
-    @GetMapping("api/log")
+    @GetMapping("api/logout")
     public Result loginOut(){
         Subject subject = SecurityUtils.getSubject();
         subject.logout();
