@@ -10,6 +10,7 @@ import com.tommy.white_jotter.service.AdminRoleService;
 import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
+import javax.validation.Valid;
 import java.util.List;
 import java.util.Map;
 
@@ -37,7 +38,7 @@ public class RoleController {
     }
 
     @PutMapping("/api/admin/role")
-    public Result editRole(@RequestBody Admin_role admin_role){
+    public Result editRole(@RequestBody @Valid Admin_role admin_role){
         adminRoleService.addOrUpdate(admin_role);
         adminRolePermissionService.savePermChange(admin_role.getId(),admin_role.getPermissions());
         return ResultFactory.buildSuccessResult("修改role成功");
