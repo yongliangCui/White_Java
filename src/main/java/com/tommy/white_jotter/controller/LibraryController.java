@@ -44,7 +44,7 @@ public class LibraryController {
     @GetMapping("api/search")
     public Result search(@RequestParam("keywords") String keywords){
         if (StringUtils.isBlank(keywords)){
-            return ResultFactory.buildFailResult("keywords不能为空");
+            return ResultFactory.buildSuccessResult(bookService.list());
         }
         List<Book> bookList = bookService.search(keywords);
         return ResultFactory.buildSuccessResult(bookList);
